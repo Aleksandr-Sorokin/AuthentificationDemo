@@ -1,4 +1,4 @@
-package ru.sorokin.exceptions.model;
+package ru.sorokin.exceptions;
 
 public class NotFoundException extends RuntimeException {
     public NotFoundException(String message) {

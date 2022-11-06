@@ -3,7 +3,7 @@ package ru.sorokin.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.sorokin.entity.BookEntity;
-import ru.sorokin.exceptions.model.NotFoundException;
+import ru.sorokin.exceptions.NotFoundException;
 import ru.sorokin.mapper.BookToEntityMapper;
 import ru.sorokin.model.Book;
 import ru.sorokin.repository.BookRepository;

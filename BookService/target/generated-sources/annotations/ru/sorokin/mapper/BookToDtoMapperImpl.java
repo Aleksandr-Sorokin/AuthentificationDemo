@@ -1,13 +1,13 @@
 package ru.sorokin.mapper;
 
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 import ru.sorokin.model.Book;
 import ru.sorokin.model.BookRequest;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-06T22:06:52+0700",
+    date = "2022-11-07T01:59:05+0700",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.15 (Amazon.com Inc.)"
 )
 @Component
