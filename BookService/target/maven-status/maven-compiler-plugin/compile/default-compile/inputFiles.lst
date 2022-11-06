@@ -1,0 +1,13 @@
+C:\Users\Александр\IdeaProjects\AuthentificationDemo\BookService\src\main\java\ru\sorokin\model\Book.java
+C:\Users\Александр\IdeaProjects\AuthentificationDemo\BookService\src\main\java\ru\sorokin\controllers\HelloController.java
+C:\Users\Александр\IdeaProjects\AuthentificationDemo\BookService\src\main\java\ru\sorokin\mapper\BookToEntityMapper.java
+C:\Users\Александр\IdeaProjects\AuthentificationDemo\BookService\src\main\java\ru\sorokin\model\BookRequest.java
+C:\Users\Александр\IdeaProjects\AuthentificationDemo\BookService\src\main\java\ru\sorokin\service\DefaultBookService.java
+C:\Users\Александр\IdeaProjects\AuthentificationDemo\BookService\src\main\java\ru\sorokin\BookServiceApplication.java
+C:\Users\Александр\IdeaProjects\AuthentificationDemo\BookService\src\main\java\ru\sorokin\repository\BookRepository.java
+C:\Users\Александр\IdeaProjects\AuthentificationDemo\BookService\src\main\java\ru\sorokin\controllers\BookController.java
+C:\Users\Александр\IdeaProjects\AuthentificationDemo\BookService\src\main\java\ru\sorokin\exceptions\ErrorHandle.java
+C:\Users\Александр\IdeaProjects\AuthentificationDemo\BookService\src\main\java\ru\sorokin\mapper\BookToDtoMapper.java
+C:\Users\Александр\IdeaProjects\AuthentificationDemo\BookService\src\main\java\ru\sorokin\service\BookService.java
+C:\Users\Александр\IdeaProjects\AuthentificationDemo\BookService\src\main\java\ru\sorokin\entity\BookEntity.java
+C:\Users\Александр\IdeaProjects\AuthentificationDemo\BookService\src\main\java\ru\sorokin\exceptions\model\NotFoundException.java
