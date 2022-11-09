@@ -36,11 +36,12 @@ public class AuthorizationFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
         }
     }
+
     private boolean checkAuthorization(String authToken) {
-        if (!authToken.startsWith("Bearer ")){
+        if (!authToken.startsWith("Token ")) {
             return false;
         }
-        String token = authToken.substring(7);
+        String token = authToken.substring(6);
         return tokenService.checkToken(token);
     }
 }

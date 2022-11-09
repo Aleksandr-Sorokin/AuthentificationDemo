@@ -25,7 +25,7 @@ public class DefaultTokenService implements TokenService {
                 log.error("Issuer is incorrect");
                 return false;
             }
-            if (!decodedJWT.getAudience().equals("Authentication-demo")) {
+            if (!decodedJWT.getAudience().get(0).equals("Authentication-demo")) {
                 log.error("Audience is incorrect");
                 return false;
             }
