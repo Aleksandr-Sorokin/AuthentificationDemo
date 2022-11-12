@@ -26,13 +26,18 @@ public class DefaultClientService implements ClientService {
 
     @Override
     public void checkCredentials(String clientId, String clientSecret) {
+        ClientEntity clientEntity = checkClientId(clientId);
+        if (!BCrypt.checkpw(clientSecret, clientEntity.getHash())) {
+            throw new LoginException("Ключ не соответствует");
+        }
+    }
+
+    @Override
+    public ClientEntity checkClientId(String clientId) {
         Optional<ClientEntity> optionalClientEntity = clientRepository.findById(clientId);
         if (optionalClientEntity.isEmpty()) {
             throw new LoginException(String.format("Пользователь с id %s не найден", clientId));
         }
-        ClientEntity clientEntity = optionalClientEntity.get();
-        if (!BCrypt.checkpw(clientSecret, clientEntity.getHash())) {
-            throw new LoginException("Ключ не соответствует");
-        }
+        return optionalClientEntity.get();
     }
 }

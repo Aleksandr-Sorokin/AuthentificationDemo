@@ -27,21 +27,37 @@ public class AuthorizationFilter extends OncePerRequestFilter {
         if (!enabled) {
             filterChain.doFilter(request, response);
         }
-        String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
-        if (authHeader == null || authHeader.isBlank()) {
+        String auth = request.getHeader(HttpHeaders.AUTHORIZATION);
+        String authShort = null;
+        String authLong = null;
+        if (auth != null) {
+            int index = auth.lastIndexOf("TOKEN ");
+            authShort = auth.substring(6, index - 2);
+            authLong = auth.substring(index + 6);
+        }
+        if ((authShort == null || authShort.isBlank())) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        } else if (!checkAuthorization(authHeader)) {
+        } else if (!checkAuthorization(authShort, authLong)) {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         } else {
             filterChain.doFilter(request, response);
         }
     }
 
-    private boolean checkAuthorization(String authToken) {
-        if (!authToken.startsWith("Token ")) {
+    private boolean checkAuthorization(String authShort, String authLong) {
+        System.out.println("checkAuthorization");
+        if (!authShort.startsWith("Token ") && !authLong.startsWith("Token ")) {
             return false;
         }
-        String token = authToken.substring(6);
-        return tokenService.checkToken(token);
+        String tokenShort = authShort.substring(6);
+        String tokenLong = authLong.substring(6);
+        if (tokenService.checkToken(tokenShort)) {
+            return true;
+        } else if (tokenService.checkToken(tokenLong)) {
+            tokenService.createNewToken(tokenLong);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

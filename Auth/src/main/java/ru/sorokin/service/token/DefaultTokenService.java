@@ -18,15 +18,20 @@ public class DefaultTokenService implements TokenService {
 
     @Override
     public String generationToken(String clientId) {
+        StringBuilder token = new StringBuilder("Token " + createToken(clientId, 3) +
+                " TOKEN " + createToken(clientId, 5));
+        return String.valueOf(token);
+    }
+
+    private String createToken(String clientId, int minutes) {
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
         Instant now = Instant.now();
-        Instant exp = now.plus(5, ChronoUnit.MINUTES);
         return JWT.create()
                 .withIssuer("auth-service")
                 .withAudience("Authentication-demo")
                 .withSubject(clientId)
                 .withIssuedAt(Date.from(now))
-                .withExpiresAt(Date.from(exp))
+                .withExpiresAt(Date.from(now.plus(minutes, ChronoUnit.MINUTES)))
                 .sign(algorithm);
     }
 }

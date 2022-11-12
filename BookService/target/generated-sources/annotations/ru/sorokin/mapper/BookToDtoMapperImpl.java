@@ -7,7 +7,7 @@ import ru.sorokin.model.BookRequest;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-07T22:53:48+0700",
+    date = "2022-11-12T21:30:57+0700",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.15 (Amazon.com Inc.)"
 )
 @Component
