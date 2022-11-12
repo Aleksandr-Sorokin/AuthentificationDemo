@@ -2,14 +2,13 @@ package ru.sorokin.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.sorokin.model.TokenResponse;
 import ru.sorokin.model.User;
 import ru.sorokin.service.client.ClientService;
 import ru.sorokin.service.token.TokenService;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping(path = "/auth")
@@ -23,9 +22,15 @@ public class AuthController {
         return ResponseEntity.ok("Зарегистрирован");
     }
 
-    @PostMapping(path = "/token")
+    @GetMapping(path = "/token")
     public TokenResponse getToken(@RequestBody User user) {
         clientService.checkCredentials(user.getClientId(), user.getClientSecret());
         return new TokenResponse(tokenService.generationToken(user.getClientId()));
+    }
+
+    @GetMapping(path = "/token/reissue")
+    public TokenResponse reissueToken(@RequestParam String clientId) {
+        clientService.checkClientId(clientId);
+        return new TokenResponse(tokenService.generationToken(clientId));
     }
 }
